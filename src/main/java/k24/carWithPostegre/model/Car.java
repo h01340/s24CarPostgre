@@ -44,6 +44,15 @@ public class Car {
 	
 
 	public Car(@NotEmpty(message = "car's brand cannot be empty.") @Size(min = 3, max = 250) String brand, String model,
+			Owner owner) {
+		this.brand = brand;
+		this.model = model;
+		this.owner = owner;
+	}
+
+
+
+	public Car(@NotEmpty(message = "car's brand cannot be empty.") @Size(min = 3, max = 250) String brand, String model,
 			String color, String registerNumber, double price, int year, Owner owner) {
 		super();
 		this.brand = brand;

@@ -41,6 +41,15 @@ public class Owner {
 		super();
 	}
 
+	
+	public Owner(@Size(min = 1, max = 30) String firstName, String lastName,
+			@Min(value = 1900, message = "min value is 1900") @Max(value = 2024, message = "max value is 2024") int yob) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.yob = yob;
+	}
+
+
 	public Owner(String firstName, String lastName, String city, String ssn, int yob) {
 		super();
 		this.firstName = firstName;
@@ -49,6 +58,7 @@ public class Owner {
 		this.ssn = ssn;
 		this.yob = yob;
 	}
+
 
 	public Owner(String firstName, String lastName, String city, String ssn, int yob, List<Car> cars) {
 		super();
