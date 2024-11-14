@@ -23,7 +23,7 @@ public class CarWithPostegreApplication {
 		SpringApplication.run(CarWithPostegreApplication.class, args);
 	}
 
-	@Bean
+	/* @Bean
 	public CommandLineRunner demoData(CarRepository carRepository,
 			OwnerRepository ownerRepository,
 			ApplicationUserRepository applicationUserRepository) {
@@ -60,5 +60,5 @@ public class CarWithPostegreApplication {
 			}
 
 		};
-	}
+	} */
 }

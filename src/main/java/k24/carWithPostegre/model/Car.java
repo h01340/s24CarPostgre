@@ -18,10 +18,12 @@ public class Car {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	
 	@NotEmpty(message = "car's brand cannot be empty.")
     @Size(min = 3, max = 250)
 	private String brand;
-	
+
+	@Column(name="malli")
 	private String model;
 	private String color; 
 	

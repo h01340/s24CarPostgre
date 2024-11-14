@@ -22,29 +22,31 @@ public class WebSecurityConfig {
 
 	private static final AntPathRequestMatcher[] WHITE_LIST_URLS = {
 			new AntPathRequestMatcher("/h2-console/**"),
-			new AntPathRequestMatcher("/api/**"),
-			new AntPathRequestMatcher("/cars/**") };
+			new AntPathRequestMatcher("/api/**")
+			// new AntPathRequestMatcher("/cars/**")
+	};
 
 	private static final AntPathRequestMatcher[] ADMIN_LIST_URLS = {
 			new AntPathRequestMatcher("/admin/**"),
 			new AntPathRequestMatcher("/owner/**") };
 
-	// secure configurations with lambda
+	// secure configurations with lambda!
 	@Bean
 	public SecurityFilterChain configure(HttpSecurity http) throws Exception {
 		http.authorizeHttpRequests(authorizeRequest -> authorizeRequest
 				.requestMatchers(antMatcher("/css/**")).permitAll()
 				// .requestMatchers(antMatcher("/api/**")).permitAll()
 				.requestMatchers(antMatcher("/vaatteet/**")).permitAll()
-				.requestMatchers(WHITE_LIST_URLS).permitAll().requestMatchers(ADMIN_LIST_URLS)
+				.requestMatchers(WHITE_LIST_URLS).permitAll()
+				.requestMatchers(ADMIN_LIST_URLS)
 				.hasAuthority("ADMIN")
 				.anyRequest().authenticated())
 				.headers(headers -> headers
 						.frameOptions(frameOptions -> frameOptions.disable())) // enable h2console
 				.formLogin(formlogin -> formlogin
 						.defaultSuccessUrl("/carlist", true).permitAll())
-				.logout(logout -> logout.permitAll())
-				.csrf(csrf -> csrf.disable()); // not for production, just for development
+				.logout(logout -> logout.permitAll());
+				//.csrf(csrf -> csrf.disable()); // not for production, just for development
 		return http.build();
 	}
 
