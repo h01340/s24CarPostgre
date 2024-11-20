@@ -33,7 +33,7 @@ public class OwnerController {
 	public String getOwners(Model model) {
 		log.info("show owners");
 		model.addAttribute("owners", ownerRepository.findAll());
-		return "/owner/ownerList";
+		return "owner/ownerList";
 	}
 
 	@GetMapping("owner/addOwner")
@@ -46,10 +46,10 @@ public class OwnerController {
 	public String saveOwner(@Valid @ModelAttribute("uusiOmistaja") Owner owner, BindingResult bindingResult) {
 		if (bindingResult.hasErrors()) {
 			System.out.println("some error happened");
-			return "/owner/addOwner";
+			return "owner/addOwner";
 		}
 		ownerRepository.save(owner);
-		return "redirect:/owner/ownerlist";
+		return "redirect:owner/ownerlist";
 	}
 
 	@GetMapping("/owner/deleteOwner/{id}")
@@ -57,12 +57,12 @@ public class OwnerController {
 		System.out.println("delete owner " + id);
 		if (ownerRepository.findById(id).get().getCars().isEmpty()) {
 			ownerRepository.deleteById(id);
-			return "redirect:/owner/ownerlist";
+			return "redirect:owner/ownerlist";
 		} else {
 			System.out.println("Can't remove a owner that has cars.");
 			model.addAttribute("errorMessage", "Cannot remove an owner that has cars.");
 			model.addAttribute("owners", ownerRepository.findAll());
-			return "/owner/ownerList";
+			return "owner/ownerList";
 		}
 
 	}
