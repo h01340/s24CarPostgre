@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="applicationuser")
+@Table(name="application_user")
 public class ApplicationUser {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,6 +18,7 @@ public class ApplicationUser {
 	private String firstName;
 	@Column(name="lastname")
 	private String lastName;
+	@Column(name="userrole")
 	private String role;
 	@Column(name = "username", nullable = false, unique = true)
 	private String username;
