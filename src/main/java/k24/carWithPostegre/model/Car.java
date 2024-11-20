@@ -23,7 +23,6 @@ public class Car {
     @Size(min = 3, max = 250)
 	private String brand;
 
-	@Column(name="malli")
 	private String model;
 	private String color; 
 	
